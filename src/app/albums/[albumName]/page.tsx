@@ -3,24 +3,23 @@ import AlbumGrid from "./album-grid";
 import { SearchResult } from "@/app/gallery/page";
 import { ForceRefresh } from "@/components/force-refresh";
 
-export default async function GalleryPage({
-  params: { albumName },
-}: {
+interface Props {
   params: {
     albumName: string;
   };
-}) {
+}
 
+export default async function GalleryPage({ params }: Props) {
+  const { albumName } = params;
 
-  
+  // Configure Cloudinary
   cloudinary.v2.config({
-    cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME, // Replace with your Cloudinary cloud_name
-    api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,       // Replace with your Cloudinary API key
-    api_secret: process.env.CLOUDINARY_API_SECRET, // Replace with your Cloudinary API secret
+    cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
   });
 
-
-  
+  // Fetch results from Cloudinary
   const results = (await cloudinary.v2.search
     .expression(`resource_type:image AND folder=${albumName}`)
     .sort_by("created_at", "desc")
