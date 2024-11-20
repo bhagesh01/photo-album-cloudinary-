@@ -8,7 +8,7 @@ export default async function GalleryPage({
   params,
 }: {
   params: {
-    albumName: string;
+    albumName: any;
   };
 }) {
   const { albumName } = params;
