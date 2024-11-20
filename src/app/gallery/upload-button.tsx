@@ -12,7 +12,7 @@ export default function UploadButton() {
     <Button asChild>
       <CldUploadButton
       uploadPreset="j0ankcvq"
-        onUpload={(result: UploadResult) => {
+        onUpload={() => {
           setTimeout(() => {
             router.refresh();
           }, 2000);

@@ -4,9 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { CldImage } from "next-cloudinary";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSearchParams } from "next/navigation"; // Correct import
-import { Loader } from "lucide-react";
 
 export default function EditPage() {
   const searchParams = useSearchParams(); // Use searchParams hook
